@@ -8,7 +8,7 @@ def main():
  else:s=t[:4096];f=io.StringIO(t)
  try:d=csv.Sniffer().sniff(s)
  except:d=csv.excel
- has=(not nh)and csv.Sniffer().has_header(s)
+ has=(not nh)and not any(c.isdigit() for c in s.splitlines()[0])
  R=csv.DictReader(f,dialect=d)if has else csv.reader(f,dialect=d)
  for r in R:
   if has:print(json.dumps(r,ensure_ascii=False))
