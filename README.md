@@ -1,5 +1,5 @@
 # nano-csv2json
-[![PyPI](https://img.shields.io/pypi/v/nano-csv2json-py.svg?color=blue)](https://pypi.org/project/nano-csv2json-py/)
+[![PyPI](https://img.shields.io/pypi/v/nano-csv2json.svg?color=blue)](https://pypi.org/project/nano-csv2json/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 ![Size](https://img.shields.io/badge/size-~1KB-lightgrey.svg)
 [![CI](https://github.com/ozgunlu/nano-csv2json/actions/workflows/ci.yml/badge.svg)](https://github.com/ozgunlu/nano-csv2json/actions)
