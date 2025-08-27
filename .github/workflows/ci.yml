@@ -1,0 +1,25 @@
+name: CI
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.x' }
+
+      - name: Write sample CSVs
+        run: |
+          printf "a,b\n1,2\n3,4\n" > h.csv
+          printf "1;2\n3;4\n" > nh.csv
+
+      # module tests (header & no-header)
+      - run: python -c "import app_min,sys,io;print(app_min.main.__name__)"  # import sanity
+      - run: python app_min.py h.csv | head -1 | grep -q '{"a":"1","b":"2"}'
+      - run: python app_min.py --no-header nh.csv | head -1 | grep -q '{"c1":"1","c2":"2"}'
+
+      # CLI tests
+      - run: pip install .
+      - run: nano-csv2json h.csv | head -1 | grep -q '{"a":"1","b":"2"}'
+      - run: nano-csv2json --no-header nh.csv | head -1 | grep -q '{"c1":"1","c2":"2"}'
