@@ -11,6 +11,6 @@ def main():
  has=(not nh)and not any(c.isdigit() for c in s.splitlines()[0])
  R=csv.DictReader(f,dialect=d)if has else csv.reader(f,dialect=d)
  for r in R:
-  if has:print(json.dumps(r,ensure_ascii=False))
-  else:print(json.dumps({f'c{i+1}':v for i,v in enumerate(r)},ensure_ascii=False))
+  if has:print(json.dumps(r,ensure_ascii=False,separators=(',',':')))
+  else:print(json.dumps({f'c{i+1}':v for i,v in enumerate(r)},ensure_ascii=False,separators=(',',':')))
 if __name__=='__main__':main()
